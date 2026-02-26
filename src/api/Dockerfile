@@ -10,6 +10,4 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 EXPOSE 8000
 
-# Les variables d'environnement (COSMOS_*, BLOB_*) doivent être fournies au runtime
-# Exemple : docker run --env-file .env ... ou docker compose up
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
