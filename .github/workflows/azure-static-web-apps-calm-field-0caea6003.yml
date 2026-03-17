@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/front/**'
+      - '.github/workflows/azure-static-web-apps-calm-field-0caea6003.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
