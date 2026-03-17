@@ -6,10 +6,14 @@ app = FastAPI(title="Job Management API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Autoriser tous les origins pour le développement
-    allow_credentials=False,  # Nécessaire quand allow_origins=["*"]
-    allow_methods=["*"],  # Autoriser toutes les méthodes
-    allow_headers=["*"],  # Autoriser tous les headers
+    allow_origins=[
+        "https://calm-field-0caea6003.2.azurestaticapps.net",
+        "http://localhost:3000",
+        "http://localhost:3001",
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
 )
 
 app.include_router(
