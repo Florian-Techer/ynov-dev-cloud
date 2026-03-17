@@ -21,15 +21,20 @@ export default function Home() {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
+    const requestBody = {
+      file_name: selectedFile.name,
+      contentType: selectedFile.type || "application/octet-stream",
+    };
 
     try {
       setUploadStatus("Upload en cours...");
       // TODO: Remplacer par l'URL de votre API
       const response = await fetch("https://doc-api-ft.azurewebsites.net/jobs", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
       });
 
       if (response.ok) {
