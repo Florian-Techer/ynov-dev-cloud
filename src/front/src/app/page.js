@@ -6,12 +6,14 @@ import styles from "./page.module.css";
 export default function Home() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
+  const [jobInfo, setJobInfo] = useState(null);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedFile(file);
       setUploadStatus("");
+      setJobInfo(null);
     }
   };
 
@@ -38,15 +40,23 @@ export default function Home() {
       });
 
       if (response.ok) {
+        const data = await response.json();
+        setJobInfo({
+          jobId: data.jobId,
+          status: data.status,
+          uploadUrl: data.uploadUrl,
+        });
         setUploadStatus("Fichier uploadé avec succès !");
         setSelectedFile(null);
         // Réinitialiser l'input
         document.getElementById("file-input").value = "";
       } else {
         setUploadStatus("Erreur lors de l'upload");
+        setJobInfo(null);
       }
     } catch (error) {
       setUploadStatus("Erreur: " + error.message);
+      setJobInfo(null);
     }
   };
 
@@ -111,6 +121,31 @@ export default function Home() {
               }`}
             >
               {uploadStatus}
+            </div>
+          )}
+
+          {jobInfo && (
+            <div className={styles.jobInfo}>
+              <h3>Informations du job</h3>
+              <div className={styles.jobDetails}>
+                <p>
+                  <strong>Job ID:</strong> <span className={styles.jobId}>{jobInfo.jobId}</span>
+                </p>
+                <p>
+                  <strong>Status:</strong> <span className={styles.jobStatus}>{jobInfo.status}</span>
+                </p>
+                <p>
+                  <strong>Upload URL:</strong>
+                </p>
+                <a
+                  href={jobInfo.uploadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.uploadUrl}
+                >
+                  {jobInfo.uploadUrl}
+                </a>
+              </div>
             </div>
           )}
         </div>

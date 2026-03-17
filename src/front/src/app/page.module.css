@@ -251,3 +251,72 @@ a.secondary {
   background-color: #ffebee;
   color: #c62828;
 }
+
+.jobInfo {
+  padding: 20px;
+  background-color: var(--background);
+  border-radius: 8px;
+  border: 1px solid var(--button-secondary-border);
+  margin-top: 16px;
+}
+
+.jobInfo h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.jobDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jobDetails p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.jobId {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: var(--foreground);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.jobStatus {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  text-transform: uppercase;
+}
+
+.uploadUrl {
+  display: block;
+  font-size: 13px;
+  color: #1976d2;
+  text-decoration: none;
+  word-break: break-all;
+  padding: 8px;
+  background-color: var(--foreground);
+  border-radius: 4px;
+  border: 1px solid var(--button-secondary-border);
+  transition: all 0.2s;
+}
+
+.uploadUrl:hover {
+  background-color: #e3f2fd;
+  border-color: #1976d2;
+  text-decoration: underline;
+}
